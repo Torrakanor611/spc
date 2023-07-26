@@ -7,6 +7,12 @@ Results are ploted
 ## How to install
 Developed and tested in python3.10.6, on ubuntu22.04
 
+### Prerequisites
+```
+sudo apt-get install python3-tk
+```
+&nbsp;
+
 1. Create a virtual environment (venv)
 ```bash
 python3 -m venv venv

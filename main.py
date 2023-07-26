@@ -56,15 +56,15 @@ def main():
     cpk = []
 
     for j in range(0, steps+1):
-        s1 = spc(clin[laps*j:(laps*j)+laps], T, args.sl, args.n)
-        s2 = spc(cpoly[laps*j:(laps*j)+laps], T, args.sl, args.n)
-        s3 = spc(cinterpol[laps*j:(laps*j)+laps], T, args.sl, args.n)
-        cp.append(s1.calc_capability())
-        cp.append(s2.calc_capability())
-        cp.append(s3.calc_capability())
-        cpk.append(s1.calc_capability_index())
-        cpk.append(s2.calc_capability_index())
-        cpk.append(s3.calc_capability_index())
+        s1 = spc(clin[laps*j:(laps*j)+laps], T, args.sl)
+        s2 = spc(cpoly[laps*j:(laps*j)+laps], T, args.sl)
+        s3 = spc(cinterpol[laps*j:(laps*j)+laps], T, args.sl)
+        cp.append(s1.calc_capability(args.n))
+        cp.append(s2.calc_capability(args.n))
+        cp.append(s3.calc_capability(args.n))
+        cpk.append(s1.calc_capability_index(args.n))
+        cpk.append(s2.calc_capability_index(args.n))
+        cpk.append(s3.calc_capability_index(args.n))
 
     # plot results
     plot(clin, cpoly, cinterpol, vel, steps, laps, ltl, T, utl, cp, cpk)

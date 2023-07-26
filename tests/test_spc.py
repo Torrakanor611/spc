@@ -5,8 +5,9 @@ data = [1001.2, 1003.4, 1002.4, 1000.8, 999.6, 1000.4]
 T = 1000.0
 sl = 45
 n = 3
+# cp = 7.47
+# cpk = 7.04
 
-#
 data1 = [                   # mean      range
     2501, 2461, 2512, 2468, # 2485.5    51
     2416, 2602, 2482, 2526, # 2506.5    186
@@ -42,23 +43,21 @@ def test_spc() -> None:
     data = [200, 201, 202, 203]
     T = 201
     sl = 2
-    # n = 6 default
     test = spc(data, T, sl)
     assert test.data == data
     assert test.t == T
     assert test.sl == sl
-    assert test.n == 6
 
 def test_calc_capability() -> None:
-    t = spc(data, T, sl, n)
-    assert t.calc_capability() == 7.47
+    t = spc(data, T, sl)
+    assert t.calc_capability(n) == 7.47
 
-    t1 = spc(data1, T1, sl1, n1)
-    assert t1.calc_capability() == 1.75
+    t1 = spc(data1, T1, sl1)
+    assert t1.calc_capability(n1) == 1.75
 
 def test_calc_capability_index() -> None:
-    t = spc(data, T, sl, n)
-    assert t.calc_capability_index() == 7.04
+    t = spc(data, T, sl)
+    assert t.calc_capability_index(n) == 7.04
 
-    t1 = spc(data1, T1, sl1, n1)
-    assert t1.calc_capability_index() == 1.65
+    t1 = spc(data1, T1, sl1)
+    assert t1.calc_capability_index(n1) == 1.65
